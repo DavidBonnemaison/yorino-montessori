@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import counter from './counter';
+import cases from './cases';
+import columns from './columns';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -16,6 +18,8 @@ import counter from './counter';
  */
 const rootReducer = combineReducers({
   counter, // you might be used to: counter: counter,
+  cases,
+  columns
 });
 
 export default rootReducer;

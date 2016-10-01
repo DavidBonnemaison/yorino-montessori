@@ -46,6 +46,8 @@
   },
   "dependencies": {
     "react": "^0.14.3",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^0.14.3",
     "react-redux": "^4.1.1",
     "redux-thunk": "^1.0.3"

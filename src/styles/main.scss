@@ -74,7 +74,34 @@ footer {
     }
   }
 
-  #heart{
+  #heart {
     color: $accent-red;
   }
 }
+
+#root,
+.App {
+  width: 100%;
+}
+
+.Columns,
+.Expect {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.Columns {
+  width: 75%;
+  background-color: #ccc;
+}
+
+.Expect {
+  width: 25%;
+  text-align: center;
+  background-color: #aaa;
+  padding: 2em;
+}
+
+@import "column";
+@import "case";
