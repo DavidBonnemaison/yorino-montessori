@@ -16,13 +16,10 @@ export default function columns(state = defaultColumns, action) {
       return addType(state);
       break;
     case 'REMOVE_COLUMN':
-      console.log(state[0].type);
       if (state[0].type === 'UNITS') {
         return state;
       }
       return state.filter((column, index, array)=> {
-        console.log(index);
-        console.log(array.length);
         return index !== 0;
       });
       break;

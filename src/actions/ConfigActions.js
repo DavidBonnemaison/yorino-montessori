@@ -1,11 +1,13 @@
-export function addColumn() {
+export function addColumn(nbColumns) {
   return {
-    type: 'ADD_COLUMN'
+    type: 'ADD_COLUMN',
+    nbColumns: nbColumns
   };
 }
 
-export function removeColumn() {
+export function removeColumn(nbColumns) {
   return {
-    type: 'REMOVE_COLUMN'
+    type: 'REMOVE_COLUMN',
+    nbColumns: nbColumns
   };
 }

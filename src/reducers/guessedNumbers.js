@@ -1,22 +1,30 @@
-const initialGuesses = [
-  {
-    type: 'UNITS',
-    value: null,
-    guessed: false
-  },
-  {
-    type: 'TENS',
-    value: null,
-    guessed: false
-  },
-  {
-    type: 'HUNDREDS',
-    value: null,
-    guessed: false
-  }
-];
+function generateGuesses(nbColumns = 3) {
+  return [
+    {
+      type: 'UNITS',
+      value: null,
+      guessed: false
+    },
+    {
+      type: 'TENS',
+      value: null,
+      guessed: false
+    },
+    {
+      type: 'HUNDREDS',
+      value: null,
+      guessed: false
+    },
+    {
+      type: 'THOUSANDS',
+      value: null,
+      guessed: false
+    }
+  ].filter((col, i)=>i < nbColumns);
+}
 
-export default function guesses(state = initialGuesses, action) {
+
+export default function guesses(state = generateGuesses(), action) {
   switch (action.type) {
     case 'GUESSING':
       return state.map((guess)=> {
@@ -42,6 +50,11 @@ export default function guesses(state = initialGuesses, action) {
         return guess;
       });
       break;
+    case 'ADD_COLUMN' :
+    case 'REMOVE_COLUMN' :
+      return generateGuesses(action.nbColumns);
+      break;
+
     default:
       return state;
       break;

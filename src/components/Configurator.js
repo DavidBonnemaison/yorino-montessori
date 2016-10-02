@@ -10,14 +10,14 @@ class Configurator extends Component {
 
   render() {
 
-    const {actions} = this.props;
+    const {actions, columns} = this.props;
 
     function addColumn() {
-      actions.addColumn();
+      actions.addColumn(columns.length + 1);
     }
 
     function removeColumn() {
-      actions.removeColumn();
+      actions.removeColumn(columns.length - 1);
     }
 
     return (

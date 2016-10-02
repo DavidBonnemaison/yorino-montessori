@@ -15,7 +15,8 @@ function select(expectations, wantedType) {
 function mapStateToProps(state) {
   return {
     expect: state.expect,
-    guesses: state.guesses
+    guesses: state.guesses,
+    columns: state.columns
   }
 }
 
@@ -33,29 +34,43 @@ class Expect extends Component {
 
   render() {
 
-    console.log('EXPECT BEING RENDERED');
-
-    const {expect, actions, guesses} = this.props;
+    const {expect, actions, columns} = this.props;
 
     function handleGuessing(guessing, type) {
       actions.guessing(guessing, type)
     }
 
-    return (
-      <div className='Expect'>
-        <ExpectHundreds
-          type='HUNDREDS'
-          expectNumber={select(expect,'HUNDREDS')}
+    function buildColumn(column) {
+      let ExpectType;
+      switch (column.type) {
+        case 'UNITS':
+          ExpectType = ExpectUnits;
+          break;
+        case 'TENS':
+          ExpectType = ExpectTens;
+          break;
+        case 'HUNDREDS':
+          ExpectType = ExpectHundreds;
+          break;
+        case 'THOUSANDS':
+          ExpectType = ExpectThousands;
+          break;
+        default:
+          break;
+      }
+
+      return (
+        <ExpectType
+          type={column.type}
+          expectNumber={select(expect,column.type)}
           handleGuessing={handleGuessing}
         />
-        <ExpectTens
-          type='TENS'
-          expectNumber={select(expect,'TENS')}
-          handleGuessing={handleGuessing}/>
-        <ExpectUnits
-          type='UNITS'
-          expectNumber={select(expect,'UNITS')}
-          handleGuessing={handleGuessing}/>
+      )
+    }
+
+    return (
+      <div className='Expect'>
+        {columns.map(buildColumn)}
       </div>
     );
   }

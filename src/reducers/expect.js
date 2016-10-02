@@ -1,4 +1,4 @@
-function generateRandomState() {
+function generateRandomState(nbColumns = 3) {
   return [
     {
       type: 'UNITS',
@@ -14,14 +14,23 @@ function generateRandomState() {
       type: 'HUNDREDS',
       value: Math.floor((Math.random() * 9) + 1),
       guessed: false
+    },
+    {
+      type: 'THOUSANDS',
+      value: Math.floor((Math.random() * 9) + 1),
+      guessed: false
     }
-  ]
+  ].filter((col, i)=>i < nbColumns);
 }
 
 export default function expect(state = generateRandomState(), action) {
   switch (action.type) {
     case 'GENERATE_NUMBER':
       return generateRandomState();
+      break;
+    case 'ADD_COLUMN' :
+    case 'REMOVE_COLUMN' :
+      return generateRandomState(action.nbColumns);
       break;
     case 'CORRECT_GUESS':
       return state.map((expect)=> {

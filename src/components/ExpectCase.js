@@ -7,7 +7,6 @@ import * as ExpectActions from '../actions/ExpectActions';
 
 const dropCase = {
   drop(props) {
-    console.log(props);
   }
 };
 
@@ -27,6 +26,10 @@ class ExpectCase extends Component {
 
   render() {
     const {connectDropTarget, isOver, type, expectNumber, guesses} = this.props;
+    if(!guesses.filter((guess)=>guess.type === type).pop()) {
+      console.log(guesses.filter((guess)=>guess.type === type));
+      return <h1>Loading...</h1>;
+    }
     const guessed = guesses.filter((guess)=>guess.type === type).pop().guessed;
     const classNames = classnames({
       'ExpectCase': true,

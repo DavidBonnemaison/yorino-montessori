@@ -7,10 +7,10 @@ Work in progess.
 - [x] App structure
 - [x] Drag n Drop
 - [x] Basic validation
+- [x] Make columns configurable
 
 
 ## Todo :
-- [] Make columns configurable
 - [] Splash screen
 - [] Full validation
 - [] Factor constants
