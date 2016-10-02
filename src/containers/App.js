@@ -7,9 +7,21 @@ import HTML5Backend from 'react-dnd-html5-backend';
 
 class App extends Component {
   render() {
-    const {columns, cases} = this.props;
-    return (
-      <div className="App">
+    const {columns, cases, guesses} = this.props;
+
+    const isGameOver = guesses
+        .filter((guess) => guess.guessed === false)
+        .length === 0;
+
+    const gameOver = (
+      <div>
+        <h1>Félicitations !</h1>
+        <p>Le jeu est terminé.</p>
+      </div>
+    );
+
+    const game = (
+      <div>
         <div className="Columns">
           {columns.map((column) => {
             return (
@@ -18,6 +30,12 @@ class App extends Component {
           }) }
         </div>
         <Expect />
+      </div>
+    );
+
+    return (
+      <div className="App">
+        {isGameOver ? gameOver : game}
       </div>
     );
   }
