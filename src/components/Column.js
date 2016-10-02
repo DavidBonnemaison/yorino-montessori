@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Case from './Case.js';
+import {Case, CaseUnits, CaseTens, CaseHundreds, CaseThousands} from './Case.js';
 
 export default class Column extends Component {
   constructor(props, context) {
@@ -31,11 +31,40 @@ export default class Column extends Component {
     return (
       <div className="Column">
         {cases ? cases.map((CaseProp) => {
-          return (
-            <Case key={CaseProp.id}
-                  value={this.setCaseValue(CaseProp.number, type)}
-            />
-          )
+
+          switch (type) {
+            case 'UNITS':
+              return (
+                <CaseUnits key={CaseProp.id}
+                           value={this.setCaseValue(CaseProp.number, type)} type={type}
+                />
+              );
+              break;
+            case 'TENS':
+              return (
+                <CaseTens key={CaseProp.id}
+                          value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+              );
+              break;
+            case 'HUNDREDS':
+              return (
+                <CaseHundreds key={CaseProp.id}
+                              value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+              );
+              break;
+            case 'THOUSANDS':
+              return (
+                <CaseThousands key={CaseProp.id}
+                               value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+              );
+              break;
+            default :
+              return (
+                <Case key={CaseProp.id}
+                      value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+              );
+              break;
+          }
         }) : (<h1>Loading...</h1>)
         }
       </div>
@@ -43,6 +72,6 @@ export default class Column extends Component {
   }
 }
 
-  Column.propTypes = {
+Column.propTypes = {
   cases: PropTypes.array.isRequired
 };

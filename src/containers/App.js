@@ -1,9 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as CounterActions from '../actions/CounterActions';
+import * as ExpectActions from '../actions/ExpectActions';
 import Column from '../components/Column';
 import Expect from '../components/Expect';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -13,7 +15,8 @@ import Expect from '../components/Expect';
 class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
-    const {counter, actions, columns, cases} = this.props;
+    const {columns, cases, expect} = this.props;
+    console.log(this.props);
     return (
       <div className="App">
         <div className="Columns">
@@ -23,14 +26,13 @@ class App extends Component {
             )
           }) }
         </div>
-        <Expect />
+        <Expect expect={expect} />
       </div>
     );
   }
 }
 
 App.propTypes = {
-  counter: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -41,9 +43,9 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    counter: state.counter,
     columns: state.columns,
     cases: state.cases,
+    expect: state.expect
   };
 }
 
@@ -57,7 +59,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(CounterActions, dispatch)
+    actions: bindActionCreators(ExpectActions, dispatch)
   };
 }
 
@@ -68,6 +70,8 @@ function mapDispatchToProps(dispatch) {
  *
  * More info: https://github.com/rackt/react-redux
  */
+
+App = DragDropContext(HTML5Backend)(App);
 
 export default connect(
   mapStateToProps,
