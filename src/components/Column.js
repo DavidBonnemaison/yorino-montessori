@@ -21,7 +21,6 @@ export default class Column extends Component {
         return number * 1000;
         break;
       default:
-        console.log(type);
         return number;
     }
   }
@@ -36,32 +35,41 @@ export default class Column extends Component {
             case 'UNITS':
               return (
                 <CaseUnits key={CaseProp.id}
-                           value={this.setCaseValue(CaseProp.number, type)} type={type}
-                />
+                           value={this.setCaseValue(CaseProp.number, type)}
+                           type={type}
+                           number={CaseProp.number}/>
               );
               break;
             case 'TENS':
               return (
                 <CaseTens key={CaseProp.id}
-                          value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+                          value={this.setCaseValue(CaseProp.number, type)}
+                          type={type}
+                          number={CaseProp.number}/>
               );
               break;
             case 'HUNDREDS':
               return (
                 <CaseHundreds key={CaseProp.id}
-                              value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+                              value={this.setCaseValue(CaseProp.number, type)}
+                              type={type}
+                              number={CaseProp.number}/>
               );
               break;
             case 'THOUSANDS':
               return (
                 <CaseThousands key={CaseProp.id}
-                               value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+                               value={this.setCaseValue(CaseProp.number, type)}
+                               type={type}
+                               number={CaseProp.number}/>
               );
               break;
             default :
               return (
                 <Case key={CaseProp.id}
-                      value={this.setCaseValue(CaseProp.number, type)} type={type}/>
+                      value={this.setCaseValue(CaseProp.number, type)}
+                      type={type}
+                      number={CaseProp.number}/>
               );
               break;
           }

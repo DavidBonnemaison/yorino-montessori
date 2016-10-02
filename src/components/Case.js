@@ -1,27 +1,38 @@
 import React, {Component, PropTypes} from 'react';
 import {DragSource} from 'react-dnd';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as ExpectActions from './../actions/ExpectActions';
 
 const caseSource = {
   beginDrag(props) {
     return {
       value: props.value,
-      type: props.type
+      type: props.type,
+      number: props.number
     };
   },
   endDrag(props, monitor, component) {
     if (!monitor.didDrop()) {
-      console.log("Pas ici");
       return;
     }
 
     // When dropped on a compatible target, do something
     const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
-    console.log('SUCCESS');
-    console.log(dropResult);
-    console.log(item);
+    const toGuess = component.stateProps.expect.filter((guesses) => guesses.type === item.type).pop().value;
+    component.store.dispatch(ExpectActions.guessing(item.number, item.type));
+    component.store.dispatch(ExpectActions.guessNumber(
+      item.number, toGuess, item.type
+    ));
   }
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ExpectActions, dispatch)
+  };
+}
 
 function collect(connect, monitor) {
   return {
@@ -54,6 +65,15 @@ Case.propTypes = {
   isDragging: PropTypes.bool.isRequired,
   connectDragSource: PropTypes.func.isRequired
 };
+
+
+function mapStateToProps(state) {
+  return {
+    expect: state.expect
+  }
+}
+
+Case = connect(mapStateToProps, mapDispatchToProps)(Case);
 
 let CaseUnits = Case;
 let CaseTens = Case;

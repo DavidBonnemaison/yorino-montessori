@@ -6,13 +6,23 @@ export function generateNumber() {
   };
 }
 
-export function guessNumber(type) {
-  return function (dispatch, getState) {
-    dispatch(
-      {
-        type: 'GUESSED',
-        guessed: type
-      }
-    )
+export function guessNumber(wasGuessed, toGuess, type) {
+  if (wasGuessed === toGuess) {
+    return {
+      type: 'CORRECT_GUESS',
+      guessType: type
+    }
+  }
+  return {
+    type: 'WRONG_GUESS',
+    guessType: type
+  }
+}
+
+export function guessing(guessing, type) {
+  return {
+    type: 'GUESSING',
+    guessType: type,
+    guessedNumber: guessing
   }
 }

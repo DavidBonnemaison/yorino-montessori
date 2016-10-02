@@ -1,7 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as ExpectActions from '../actions/ExpectActions';
 import Column from '../components/Column';
 import Expect from '../components/Expect';
 import {DragDropContext} from 'react-dnd';
@@ -16,7 +14,6 @@ class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
     const {columns, cases, expect} = this.props;
-    console.log(this.props);
     return (
       <div className="App">
         <div className="Columns">
@@ -26,7 +23,7 @@ class App extends Component {
             )
           }) }
         </div>
-        <Expect expect={expect} />
+        <Expect />
       </div>
     );
   }
@@ -45,7 +42,8 @@ function mapStateToProps(state) {
   return {
     columns: state.columns,
     cases: state.cases,
-    expect: state.expect
+    expect: state.expect,
+    guesses: state.guesses
   };
 }
 
@@ -57,11 +55,7 @@ function mapStateToProps(state) {
  *
  * More info: http://redux.js.org/docs/api/bindActionCreators.html
  */
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ExpectActions, dispatch)
-  };
-}
+
 
 /**
  * 'connect' is provided to us by the bindings offered by 'react-redux'. It simply
@@ -74,6 +68,5 @@ function mapDispatchToProps(dispatch) {
 App = DragDropContext(HTML5Backend)(App);
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(App);

@@ -24,16 +24,24 @@ export default function expect(state = generateRandomState(), action) {
     case 'GENERATE_NUMBER':
       return generateRandomState();
       break;
-    case 'GUESSED':
-      return state.filter((expectation) => {
-        return expectation.type === action.guessed
-      }).map((expectation)=> {
-        expectation.guessed = true;
-        return expectation;
+    case 'CORRECT_GUESS':
+      return state.map((expect)=> {
+        if (expect.type === action.guessType) {
+          return Object.assign({}, expect, {guessed: true});
+        }
+        return expect;
+      });
+      break;
+    case 'WRONG_GUESS':
+      return state.map((expect)=> {
+        if (expect.type === action.guessType) {
+          return Object.assign({}, expect, {guessed: false});
+        }
+        return expect;
       });
       break;
     default:
-      return generateRandomState();
+      return state;
       break;
   }
 }

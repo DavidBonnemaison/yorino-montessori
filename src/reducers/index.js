@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import counter from './counter';
 import cases from './cases';
 import columns from './columns';
 import expect from './expect';
+import guesses from './guessedNumbers';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -18,10 +18,10 @@ import expect from './expect';
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  counter, // you might be used to: counter: counter,
   cases,
   columns,
-  expect
+  expect,
+  guesses
 });
 
 export default rootReducer;
