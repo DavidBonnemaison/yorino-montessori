@@ -16,7 +16,6 @@ function generateRandomState() {
       guessed: false
     }
   ]
-
 }
 
 export default function expect(state = generateRandomState(), action) {

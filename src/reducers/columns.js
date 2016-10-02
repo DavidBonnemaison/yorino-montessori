@@ -12,14 +12,19 @@ const defaultColumns = [
 
 export default function columns(state = defaultColumns, action) {
   switch (action.type) {
-    case 'ADD_TYPE':
+    case 'ADD_COLUMN':
       return addType(state);
       break;
-    case 'REMOVE_TYPE':
-      if (state.last().type = 'UNITS') {
+    case 'REMOVE_COLUMN':
+      console.log(state[0].type);
+      if (state[0].type === 'UNITS') {
         return state;
       }
-      return state.shift();
+      return state.filter((column, index, array)=> {
+        console.log(index);
+        console.log(array.length);
+        return index !== 0;
+      });
       break;
     default:
       return state;
@@ -28,16 +33,16 @@ export default function columns(state = defaultColumns, action) {
 }
 
 function addType(state) {
-  const lastColumn = state.last().type;
+  const lastColumn = state[0].type;
   switch (lastColumn) {
     case 'UNITS':
-      return state.unshift({type: 'TENS'});
+      return [{type: 'TENS'}, ...state];
       break;
     case 'TENS':
-      return state.unshift({type: 'HUNDREDS'});
+      return [{type: 'HUNDREDS'}, ...state];
       break;
     case 'HUNDREDS':
-      return state.unshift({type: 'THOUSANDS'});
+      return [{type: 'THOUSANDS'}, ...state];
       break;
     default:
       return state;

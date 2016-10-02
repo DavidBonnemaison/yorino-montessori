@@ -1,9 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import Column from '../components/Column';
-import Expect from '../components/Expect';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import Column from '../components/Column';
+import Expect from '../components/Expect';
+import Config from '../components/Configurator';
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
           }) }
         </div>
         <Expect />
+        <Config />
       </div>
     );
 
