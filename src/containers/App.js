@@ -7,8 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 
 class App extends Component {
   render() {
-    // we can use ES6's object destructuring to effectively 'unpack' our props
-    const {columns, cases, expect} = this.props;
+    const {columns, cases} = this.props;
     return (
       <div className="App">
         <div className="Columns">
@@ -33,7 +32,8 @@ function mapStateToProps(state) {
     columns: state.columns,
     cases: state.cases,
     expect: state.expect,
-    guesses: state.guesses
+    guesses: state.guesses,
+    appStatus: state.appStatus
   };
 }
 
