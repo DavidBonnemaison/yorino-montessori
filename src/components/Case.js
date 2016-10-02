@@ -19,7 +19,6 @@ const caseSource = {
 
     // When dropped on a compatible target, do something
     const item = monitor.getItem();
-    const dropResult = monitor.getDropResult();
     const toGuess = component.stateProps.expect.filter((guesses) => guesses.type === item.type).pop().value;
     component.store.dispatch(ExpectActions.guessing(item.number, item.type));
     component.store.dispatch(ExpectActions.guessNumber(

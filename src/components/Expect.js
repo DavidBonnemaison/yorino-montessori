@@ -41,10 +41,6 @@ class Expect extends Component {
       actions.guessing(guessing, type)
     }
 
-    function setGuessState(guesses, type) {
-      return guesses.filter((guess)=> guess.type = type).guessed;
-    }
-
     return (
       <div className='Expect'>
         <ExpectHundreds

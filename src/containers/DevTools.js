@@ -1,5 +1,5 @@
 import React from 'react';
-import { createDevTools } from 'redux-devtools';
+import {createDevTools} from 'redux-devtools';
 
 /**
  * These 2 monitors are very commonly used with 'redux-devtools'.
@@ -16,7 +16,7 @@ const DevTools = createDevTools(
    */
   <DockMonitor toggleVisibilityKey="ctrl-h"
                changePositionKey="ctrl-q">
-    <LogMonitor theme="tomorrow" />
+    <LogMonitor theme="tomorrow"/>
   </DockMonitor>
 );
 

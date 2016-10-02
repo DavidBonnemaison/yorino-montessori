@@ -9,10 +9,10 @@
   transition: 200ms all ease-in-out;
 }
 
-.ExpectCase--hover {
-  background-color: blue;
+.ExpectCase--guessed {
+  background-color: green;
 }
 
-.ExpectCase--success {
-  background-color: green;
+.ExpectCase--hover {
+  background-color: blue;
 }

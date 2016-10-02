@@ -26,7 +26,7 @@ function generateCaseNumbers() {
 
 function selectExpectByType(state, caseType) {
   return state.expect.filter((caseState)=> {
-   return caseState.type = caseType;
+    return caseState.type = caseType;
   })
 }
 
