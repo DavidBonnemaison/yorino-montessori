@@ -1,5 +1,5 @@
 function generateRandomState(nbColumns = 3) {
-  return [
+  const arr = [
     {
       type: 'UNITS',
       value: Math.floor((Math.random() * 9) + 1),
@@ -20,10 +20,29 @@ function generateRandomState(nbColumns = 3) {
       value: Math.floor((Math.random() * 9) + 1),
       guessed: false
     }
-  ].filter((col, i)=>i < nbColumns);
+  ].filter((col, i) => i < nbColumns);
+  arr.push({
+    type: 'FULL_NUMBER',
+    value: generateFullNumber(arr)
+  });
+  return arr;
+}
+
+function generateFullNumber(arr) {
+  return arr.reverse().map(elm => String(elm.value)).reduce((prevElm, elm) => prevElm + elm);
 }
 
 export default function expect(state = generateRandomState(), action) {
+
+  function handleGuess(bool) {
+    return state.map(expect => {
+      if (expect.type === action.guessType) {
+        return Object.assign({}, expect, {guessed: bool});
+      }
+      return expect;
+    });
+  }
+
   switch (action.type) {
     case 'GENERATE_NUMBER':
       return generateRandomState();
@@ -33,20 +52,10 @@ export default function expect(state = generateRandomState(), action) {
       return generateRandomState(action.nbColumns);
       break;
     case 'CORRECT_GUESS':
-      return state.map((expect)=> {
-        if (expect.type === action.guessType) {
-          return Object.assign({}, expect, {guessed: true});
-        }
-        return expect;
-      });
+      return handleGuess(true);
       break;
     case 'WRONG_GUESS':
-      return state.map((expect)=> {
-        if (expect.type === action.guessType) {
-          return Object.assign({}, expect, {guessed: false});
-        }
-        return expect;
-      });
+      return handleGuess(false);
       break;
     default:
       return state;

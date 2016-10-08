@@ -13,6 +13,7 @@ Work in progess.
 - [x] Params screen logic
 - [x] End screen logic
 - [x] Visual feedback (correct and wrong guess)
+- [x] Sound management
 
 ## Todo :
 
@@ -21,7 +22,9 @@ Work in progess.
 - [] End screen styles
 - [] App styles
 - [] Factor constants
-- [] Sound management
 - [] Lint
 - [] PropTypes
 - [] Offline handling
+
+## Blocked :
+- [] Dictate actual numbers. Requires A LOT of sound files. Maybe get those from a text-to-speech service ?

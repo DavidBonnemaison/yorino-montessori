@@ -2,10 +2,6 @@ const defaultCases = generateCaseNumbers();
 
 export default function cases(state = defaultCases, action) {
   switch (action.type) {
-    case 'CASE_DROPPED':
-      selectExpectByType(action.caseType);
-      return state;
-      break;
     default:
       return state;
       break;
@@ -22,8 +18,4 @@ function generateCaseNumbers() {
       }
     })
     .filter(obj => obj.id !== 0);
-}
-
-function selectExpectByType(state, caseType) {
-  return state.expect.filter(caseState => caseState.type = caseType);
 }

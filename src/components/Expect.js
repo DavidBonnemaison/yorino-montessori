@@ -5,9 +5,9 @@ import {ExpectUnits, ExpectTens, ExpectHundreds, ExpectThousands} from './Expect
 import * as ExpectActions from '../actions/ExpectActions';
 
 function select(expectations, wantedType) {
-  return expectations ? expectations.filter((expect)=> {
+  return expectations ? expectations.filter(expect => {
     return expect.type === wantedType;
-  }).map((expect) => {
+  }).map(expect => {
     return expect.value;
   }) : undefined;
 }

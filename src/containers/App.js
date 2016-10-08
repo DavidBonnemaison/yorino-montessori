@@ -7,19 +7,25 @@ import Column from '../components/Column';
 import Expect from '../components/Expect';
 import SplashScreen from '../components/SplashScreen';
 import Params from '../components/Params';
+import Sound from '../components/Sound';
 import * as AppActions from '../actions/AppActions';
 
 class App extends Component {
   render() {
 
-    const {columns, cases, guesses, app, actions} = this.props;
+    const {columns, cases, guesses, app, actions, sound} = this.props;
 
     const isGameOver = guesses
         .filter(guess=> guess.guessed === false)
         .length === 0;
 
+    if (isGameOver && app.status !== 'gameOver') {
+      actions.allGuessed();
+    }
+
     const gameOver = (
       <div>
+        <Sound />
         <h1>Félicitations !</h1>
         <p>Le jeu est terminé.</p>
       </div>
@@ -46,11 +52,14 @@ class App extends Component {
       case 'playing':
         return (
           <div className="App">
-            {isGameOver ? gameOver : game}
+            {sound.url ? <Sound /> : ''}
+            {game}
           </div>
         );
       case 'params':
         return <Params />;
+      case 'gameOver' :
+        return gameOver;
       default:
         return <SplashScreen />;
     }
@@ -72,7 +81,8 @@ function mapStateToProps(state) {
     cases: state.cases,
     expect: state.expect,
     guesses: state.guesses,
-    app: state.app
+    app: state.app,
+    sound: state.sound
   };
 }
 

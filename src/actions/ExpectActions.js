@@ -10,22 +10,23 @@ export function guessNumber(wasGuessed, toGuess, type) {
   if (wasGuessed === toGuess) {
     return {
       type: 'CORRECT_GUESS',
-      guessType: type
+      guessType: type,
+      soundUrl: 'https://www.freesound.org/data/previews/242/242501_4414128-lq.mp3'
     }
   }
 
-  for (let i = 0; i < 10; ++i) {
-    let expectedClassList = document.querySelector('[data-type=' + type + '].Case--expected').classList;
-    expectedClassList.add('Case--blink');
-    setTimeout(()=> {
-      expectedClassList.remove('Case--blink');
-    }, 2000);
-  }
+  let expectedClassList = document.querySelector('[data-type=' + type + '].Case--expected').classList;
+  expectedClassList.add('Case--blink');
+  setTimeout(()=> {
+    expectedClassList.remove('Case--blink');
+  }, 2000);
 
   return {
     type: 'WRONG_GUESS',
-    guessType: type
+    guessType: type,
+    soundUrl: 'https://www.freesound.org/data/previews/342/342756_5260872-lq.mp3'
   }
+
 }
 
 export function guessing(guessing, type) {
