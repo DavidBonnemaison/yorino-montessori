@@ -31,6 +31,9 @@ html, body  {
   padding: 2em;
 }
 
+@import "vars";
 @import "column";
 @import "case";
 @import "expect-case";
+@import "splashscreen";
+@import "configurator";

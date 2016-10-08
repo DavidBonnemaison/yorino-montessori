@@ -1,0 +1,36 @@
+.Configurator {
+  background: $orange;
+  max-width: 300px;
+  text-align: center;
+  border-radius: 3px;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.Configurator-button,
+.Configurator-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+$configurator-buttonDimension: 40px;
+.Configurator-button {
+  background-color: $blue;
+  border-radius: 100%;
+  width: $configurator-buttonDimension;
+  height: $configurator-buttonDimension;
+  line-height: $configurator-buttonDimension / 2;
+  font-size: $configurator-buttonDimension;
+  border: 2px solid $whitish;
+  margin: 0 20px;
+  transition: 200ms all ease-in-out;
+}
+
+.Configurator-button:focus {
+  outline: 0;
+}
+
+.Configurator-button:hover {
+  background-color: $green;
+}
