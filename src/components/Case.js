@@ -2,7 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {DragSource} from 'react-dnd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as ExpectActions from './../actions/ExpectActions';
+import * as ExpectActions from './../actions/ExpectActions'
+const classnames = require('classnames');
 
 const caseSource = {
   beginDrag(props) {
@@ -17,7 +18,6 @@ const caseSource = {
       return;
     }
 
-    // When dropped on a compatible target, do something
     const item = monitor.getItem();
     const toGuess = component.stateProps.expect.filter((guesses) => guesses.type === item.type).pop().value;
     component.store.dispatch(ExpectActions.guessing(item.number, item.type));
@@ -48,10 +48,17 @@ class Case extends Component {
 
 
   render() {
-    const {isDragging, connectDragSource, value} = this.props;
+    const {isDragging, connectDragSource, value, type, expect, number} = this.props;
+
+    const isExpectedValue = expect.filter(item => item.type === type)[0].value === number;
+    const classNames = classnames({
+      'Case': true,
+      'Case--expected': isExpectedValue
+    });
+
     return connectDragSource(
-      <div className="Case" style={{'opacity': isDragging ? 0 : 1}}>
-        <div className="Case-number">
+      <div className={classNames} data-type={type} style={{'opacity': isDragging ? 0 : 1}}>
+        <div className='Case-number'>
           {value}
         </div>
       </div>

@@ -15,8 +15,6 @@ class SplashScreen extends Component {
 
     const {actions} = this.props;
 
-    console.log(actions.playGame);
-
     function playGame() {
       actions.playGame();
     }

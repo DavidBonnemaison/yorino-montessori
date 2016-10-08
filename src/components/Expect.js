@@ -62,6 +62,7 @@ class Expect extends Component {
       return (
         <ExpectType
           type={column.type}
+          key={column.type}
           expectNumber={select(expect,column.type)}
           handleGuessing={handleGuessing}
         />

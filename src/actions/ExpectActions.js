@@ -13,6 +13,15 @@ export function guessNumber(wasGuessed, toGuess, type) {
       guessType: type
     }
   }
+
+  for (let i = 0; i < 10; ++i) {
+    let expectedClassList = document.querySelector('[data-type=' + type + '].Case--expected').classList;
+    expectedClassList.add('Case--blink');
+    setTimeout(()=> {
+      expectedClassList.remove('Case--blink');
+    }, 2000);
+  }
+
   return {
     type: 'WRONG_GUESS',
     guessType: type

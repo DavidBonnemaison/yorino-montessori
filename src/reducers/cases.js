@@ -21,12 +21,9 @@ function generateCaseNumbers() {
         number: i
       }
     })
-    .filter((obj)=> obj.id !== 0);
+    .filter(obj => obj.id !== 0);
 }
 
 function selectExpectByType(state, caseType) {
-  return state.expect.filter((caseState)=> {
-    return caseState.type = caseType;
-  })
+  return state.expect.filter(caseState => caseState.type = caseType);
 }
-
