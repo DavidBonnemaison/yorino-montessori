@@ -4,11 +4,13 @@ import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Column from '../components/Column';
 import Expect from '../components/Expect';
+import SplashScreen from '../components/SplashScreen';
 import Config from '../components/Configurator';
 
 class App extends Component {
   render() {
-    const {columns, cases, guesses} = this.props;
+
+    const {columns, cases, guesses, app} = this.props;
 
     const isGameOver = guesses
         .filter((guess) => guess.guessed === false)
@@ -20,6 +22,7 @@ class App extends Component {
         <p>Le jeu est terminé.</p>
       </div>
     );
+
 
     const game = (
       <div>
@@ -35,11 +38,16 @@ class App extends Component {
       </div>
     );
 
-    return (
-      <div className="App">
-        {isGameOver ? gameOver : game}
-      </div>
-    );
+    switch (app.status) {
+      case 'playing':
+        return (
+          <div className="App">
+            {isGameOver ? gameOver : game}
+          </div>
+        );
+      default:
+        return (<SplashScreen />);
+    }
   }
 }
 
@@ -53,10 +61,9 @@ function mapStateToProps(state) {
     cases: state.cases,
     expect: state.expect,
     guesses: state.guesses,
-    appStatus: state.appStatus
+    app: state.app
   };
 }
-
 
 App = DragDropContext(HTML5Backend)(App);
 

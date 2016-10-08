@@ -22,9 +22,9 @@ class Configurator extends Component {
 
     return (
       <div className="Configurator">
-        <div>Colonnes:</div>
-        <button onClick={addColumn}>+</button>
+        <div>Colonnes: {columns.length}</div>
         <button onClick={removeColumn}>-</button>
+        <button onClick={addColumn}>+</button>
       </div>
     );
   }
