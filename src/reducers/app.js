@@ -12,6 +12,8 @@ export default function app(state = initialStatus, action) {
   switch (action.type) {
     case 'PLAY_GAME':
       return Object.assign({}, state, {status: 'playing'});
+    case 'DISPLAY_PARAMS':
+      return Object.assign({}, state, {status: 'params'});
     case 'ALL_GUESSED':
       return Object.assign({}, state, {status: 'gameOver'});
       break;
