@@ -7,7 +7,7 @@ import * as ExpectActions from '../actions/ExpectActions';
 import { UNITS, TENS, HUNDREDS, THOUSANDS } from './../constants/ColumnTypes';
 
 const dropCase = {
-  drop(props) {
+  drop() {
   }
 };
 
@@ -60,8 +60,13 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-
-ExpectCase.propTypes = {};
+ExpectCase.propTypes = {
+  connectDropTarget: PropTypes.func.isRequired,
+  isOver: PropTypes.bool,
+  type: PropTypes.string.isRequired,
+  expectNumber: PropTypes.array.isRequired,
+  guesses: PropTypes.array.isRequired
+};
 
 ExpectCase = connect(mapStateToProps, mapDispatchToProps)(ExpectCase);
 
@@ -74,5 +79,6 @@ ExpectTens = DropTarget(TENS, dropCase, collect)(ExpectTens);
 ExpectHundreds = DropTarget(HUNDREDS, dropCase, collect)(ExpectHundreds);
 ExpectThousands = DropTarget(THOUSANDS, dropCase, collect)(ExpectThousands);
 ExpectCase = DropTarget('CASE', dropCase, collect)(ExpectCase);
+
 
 export { ExpectCase, ExpectUnits, ExpectTens, ExpectHundreds, ExpectThousands };

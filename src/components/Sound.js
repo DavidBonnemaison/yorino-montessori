@@ -72,6 +72,11 @@ function mapStateToProps(state) {
   };
 }
 
+Sound.propTypes = {
+  actions: PropTypes.object.isRequired,
+  sound: PropTypes.object.isRequired
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

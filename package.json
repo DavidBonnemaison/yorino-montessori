@@ -54,6 +54,7 @@
     "react-dom": "^0.14.3",
     "react-redux": "^4.1.1",
     "react-sound": "^0.5.2",
+    "redux": "^3.6.0",
     "redux-thunk": "^1.0.3"
   }
 }

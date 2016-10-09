@@ -42,6 +42,10 @@ function mapStateToProps(state) {
   };
 }
 
+Params.propTypes = {
+  actions: PropTypes.object.isRequired
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

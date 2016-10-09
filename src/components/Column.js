@@ -8,23 +8,23 @@ export default class Column extends Component {
     super(props, context);
   }
 
-  setCaseValue(number, type) {
-    switch (type) {
-      case UNITS :
-        return number;
-      case TENS:
-        return number * 10;
-      case HUNDREDS:
-        return number * 100;
-      case THOUSANDS:
-        return number * 1000;
-      default:
-        return number;
-    }
-  }
-
   render() {
     const { cases, type, nbCol } = this.props;
+
+    function setCaseValue(number, _type) {
+      switch (_type) {
+        case UNITS :
+          return number;
+        case TENS:
+          return number * 10;
+        case HUNDREDS:
+          return number * 100;
+        case THOUSANDS:
+          return number * 1000;
+        default:
+          return number;
+      }
+    }
 
     function buildCases(CaseProp) {
       let CaseType;
@@ -47,7 +47,7 @@ export default class Column extends Component {
       return (
         <CaseType
           key={CaseProp.id}
-          value={this.setCaseValue(CaseProp.number, type)}
+          value={setCaseValue(CaseProp.number, type)}
           type={type}
           number={CaseProp.number}
         />
@@ -68,5 +68,7 @@ export default class Column extends Component {
   }
 }
 Column.propTypes = {
-  cases: PropTypes.array.isRequired
+  cases: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
+  nbCol: PropTypes.number
 };

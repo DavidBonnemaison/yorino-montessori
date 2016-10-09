@@ -20,10 +20,10 @@ Work in progess.
 - [x] End screen styles
 - [x] App styles
 - [x] Factor constants
+- [x] Lint
+- [x] PropTypes
 
 ## Todo :
-- [] Lint
-- [] PropTypes
 - [] Offline handling
 
 ## Blocked :

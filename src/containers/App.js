@@ -14,7 +14,7 @@ import homeIcon from '../../static/images/home_icon.png';
 
 class App extends Component {
   render() {
-    const { columns, cases, guesses, app, actions } = this.props;
+    const { columns, cases, guesses, app, actions, sound } = this.props;
 
     const isGameOver = guesses
         .filter(guess => guess.guessed === false)
@@ -78,7 +78,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Sound />
+        {sound.url ? <Sound /> : <div />}
         <div className="Header">
           <div className="Header-paramHolder">
             <img
@@ -98,7 +98,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  columns: PropTypes.array.isRequired,
+  cases: PropTypes.array.isRequired,
+  guesses: PropTypes.array.isRequired,
+  app: PropTypes.object.isRequired,
+  sound: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -107,7 +112,8 @@ function mapStateToProps(state) {
     cases: state.cases,
     expect: state.expect,
     guesses: state.guesses,
-    app: state.app
+    app: state.app,
+    sound: state.sound
   };
 }
 

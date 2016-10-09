@@ -10,7 +10,7 @@ export function guessNumber(wasGuessed, toGuess, type) {
   }
 
   const expectedClassList = document
-    .querySelector(`data-type=["${type}"].Case--expected`)
+    .querySelector(`[data-type="${type}"].Case--expected`)
     .classList;
   expectedClassList.add('Case--blink');
   setTimeout(() => {

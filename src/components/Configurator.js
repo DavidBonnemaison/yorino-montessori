@@ -29,7 +29,10 @@ class Configurator extends Component {
   }
 }
 
-Configurator.propTypes = {};
+Configurator.propTypes = {
+  actions: PropTypes.object.isRequired,
+  columns: PropTypes.array.isRequired
+};
 
 function mapStateToProps(state) {
   return {

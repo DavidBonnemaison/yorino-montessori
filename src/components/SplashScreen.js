@@ -59,6 +59,10 @@ function mapStateToProps(state) {
   };
 }
 
+SplashScreen.propTypes = {
+  actions: PropTypes.object.isRequired
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

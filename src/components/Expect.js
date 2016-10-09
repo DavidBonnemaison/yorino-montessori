@@ -15,7 +15,6 @@ function select(expectations, wantedType) {
 function mapStateToProps(state) {
   return {
     expect: state.expect,
-    guesses: state.guesses,
     columns: state.columns
   };
 }
@@ -76,7 +75,11 @@ class Expect extends Component {
   }
 }
 
-Expect.propTypes = {};
+Expect.propTypes = {
+  expect: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
+  columns: PropTypes.array.isRequired
+};
 
 export default connect(
   mapStateToProps,

@@ -70,9 +70,12 @@ class Case extends Component {
 }
 
 Case.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   isDragging: PropTypes.bool.isRequired,
-  connectDragSource: PropTypes.func.isRequired
+  connectDragSource: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  expect: PropTypes.array.isRequired,
+  number: PropTypes.number
 };
 
 
