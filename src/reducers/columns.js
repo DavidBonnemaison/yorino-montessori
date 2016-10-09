@@ -23,6 +23,8 @@ export default function columns(state = defaultColumns, action) {
         return index !== 0;
       });
       break;
+    case 'RESET_GAME':
+      return defaultColumns;
     default:
       return state;
       break;

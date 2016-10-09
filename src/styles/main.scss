@@ -1,3 +1,5 @@
+@import "vars";
+
 * {
   box-sizing: border-box;
 }
@@ -10,7 +12,14 @@ html, body  {
 
 #root,
 .App {
-  width: 100%;
+  position: fixed;
+  padding-top: $header_position;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $green;
+  overflow: auto;
 }
 
 .Columns,
@@ -31,9 +40,9 @@ html, body  {
   padding: 2em;
 }
 
-@import "vars";
 @import "column";
 @import "case";
 @import "expect-case";
 @import "splashscreen";
+@import "header";
 @import "configurator";

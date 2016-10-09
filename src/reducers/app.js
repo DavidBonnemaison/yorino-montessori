@@ -9,13 +9,23 @@ const initialStatus = {
 };
 
 export default function app(state = initialStatus, action) {
+
+  function updateState(status) {
+    return Object.assign({}, state, {status: status});
+  }
+
   switch (action.type) {
+    case 'DISPLAY_SPLASH':
+      return updateState('splashscreen');
     case 'PLAY_GAME':
-      return Object.assign({}, state, {status: 'playing'});
+      return updateState('playing');
     case 'DISPLAY_PARAMS':
-      return Object.assign({}, state, {status: 'params'});
+      return updateState('params');
     case 'ALL_GUESSED':
-      return Object.assign({}, state, {status: 'gameOver'});
+      return updateState('gameOver');
+      break;
+    case 'RESET_GAME':
+      return updateState('splashscreen');
       break;
     default:
       return state;

@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Configurator from './Configurator';
 import * as AppActions from '../actions/AppActions';
-
-
 class SplashScreen extends Component {
 
   constructor(props, context) {

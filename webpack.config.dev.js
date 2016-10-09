@@ -45,6 +45,12 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css!sass'
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        exclude: [/node_modules/],
+        include: path.join(__dirname, 'static'),
+        loader: "file-loader"
       }
     ]
   }

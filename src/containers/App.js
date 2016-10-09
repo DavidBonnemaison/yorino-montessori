@@ -9,11 +9,13 @@ import SplashScreen from '../components/SplashScreen';
 import Params from '../components/Params';
 import Sound from '../components/Sound';
 import * as AppActions from '../actions/AppActions';
+import paramIcon from '../../static/images/params_icon.png'
+import homeIcon from '../../static/images/home_icon.png'
 
 class App extends Component {
   render() {
 
-    const {columns, cases, guesses, app, actions, sound} = this.props;
+    const {columns, cases, guesses, app, actions} = this.props;
 
     const isGameOver = guesses
         .filter(guess=> guess.guessed === false)
@@ -24,49 +26,66 @@ class App extends Component {
     }
 
     const gameOver = (
-      <div>
-        <Sound />
-        <h1>Félicitations !</h1>
+      <div className="GameOver">
+        <h1 className="GameOver-title">Félicitations !</h1>
         <p>Le jeu est terminé.</p>
+        <button className="GameOver-restart" onClick={resetGame}>
+          Recommencer
+        </button>
       </div>
     );
 
 
     const game = (
       <div>
-        <div className="Header">
-          <button onClick={displayParams}>Show params</button>
-        </div>
         <div className="Columns">
-          {columns.map((column) => {
-            return (
-              <Column type={column.type} cases={cases} key={column.type}/>
-            )
-          }) }
+          {columns.map(column => <Column type={column.type} cases={cases} key={column.type}/>) }
         </div>
         <Expect />
       </div>
     );
 
+    let content;
+
     switch (app.status) {
       case 'playing':
-        return (
-          <div className="App">
-            {sound.url ? <Sound /> : ''}
-            {game}
-          </div>
-        );
+        content = game;
+        break;
       case 'params':
-        return <Params />;
+        content = <Params />;
+        break;
       case 'gameOver' :
-        return gameOver;
+        content = gameOver;
+        break;
       default:
-        return <SplashScreen />;
+        content = <SplashScreen />;
+        break;
     }
 
     function displayParams() {
       actions.displayParams();
     }
+
+    function displaySplash() {
+      actions.displaySplash();
+    }
+
+    function resetGame() {
+      actions.resetGame()
+    }
+
+    return (
+      <div className="App">
+        <Sound />
+        <div className="Header">
+          <div className="Header-paramHolder">
+            <img src={paramIcon} onClick={displayParams} className="Header-params Header-params--spin"/>
+            <img src={homeIcon} onClick={displaySplash} className="Header-params"/>
+          </div>
+        </div>
+        {content}
+      </div>
+    )
 
   }
 }
@@ -81,8 +100,7 @@ function mapStateToProps(state) {
     cases: state.cases,
     expect: state.expect,
     guesses: state.guesses,
-    app: state.app,
-    sound: state.sound
+    app: state.app
   };
 }
 

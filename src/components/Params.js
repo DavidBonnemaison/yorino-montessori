@@ -21,9 +21,11 @@ class Params extends Component {
 
     return (
       <div className="Params">
-        PARAMS
+        <h1 className="Params-title">Paramètres</h1>
         <Configurator />
-        <button onClick={playGame}>RESUME PLAYING</button>
+        <button className="Params-resume" onClick={playGame}>
+          Retour au jeu
+        </button>
       </div>
     );
   }

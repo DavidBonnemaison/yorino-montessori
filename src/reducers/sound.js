@@ -1,19 +1,22 @@
 const defaultSound = {
-  url: null,
-  status: 'NOT_PLAYING'
+  url: 'https://s3.amazonaws.com/yorifiles/song.mp3',
+  status: 'PLAYING',
+  fadeTo: false
 };
-
 
 export default function sound(state = defaultSound, action) {
   function playSound(sound) {
-    return Object.assign({}, state, {status: 'PLAYING', url: sound});
+    return Object.assign({}, state, {status: 'PLAYING', url: sound, fadeTo: false});
   }
 
   switch (action.type) {
+    case 'PLAY_GAME':
+      return Object.assign({}, state, {fadeTo: 'fadeOut'});
     case 'START_PLAYING':
       return playSound(action.url);
     case 'STOP_PLAYING':
-      return Object.assign({}, state, {status: 'NOT_PLAYING', url: null});
+      return Object.assign({}, state, {status: 'STOPPED', url: null, fadeTo: false});
+    case 'DISPLAY_SPLASH':
     case 'CORRECT_GUESS':
     case 'WRONG_GUESS':
     case 'ALL_GUESSED':

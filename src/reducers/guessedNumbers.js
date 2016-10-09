@@ -54,7 +54,8 @@ export default function guesses(state = generateGuesses(), action) {
     case 'REMOVE_COLUMN' :
       return generateGuesses(action.nbColumns);
       break;
-
+    case 'RESET_GAME':
+      return generateGuesses();
     default:
       return state;
       break;

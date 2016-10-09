@@ -14,12 +14,13 @@ Work in progess.
 - [x] End screen logic
 - [x] Visual feedback (correct and wrong guess)
 - [x] Sound management
+- [x] Reset logic
 - [x] Splash screen styles
+- [x] Params screen styles
+- [x] End screen styles
 
 ## Todo :
 
-- [] Params screen styles
-- [] End screen styles
 - [] App styles
 - [] Factor constants
 - [] Lint

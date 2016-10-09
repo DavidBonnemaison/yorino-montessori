@@ -44,9 +44,6 @@ export default function expect(state = generateRandomState(), action) {
   }
 
   switch (action.type) {
-    case 'GENERATE_NUMBER':
-      return generateRandomState();
-      break;
     case 'ADD_COLUMN' :
     case 'REMOVE_COLUMN' :
       return generateRandomState(action.nbColumns);
@@ -57,6 +54,8 @@ export default function expect(state = generateRandomState(), action) {
     case 'WRONG_GUESS':
       return handleGuess(false);
       break;
+    case 'RESET_GAME':
+      return generateRandomState();
     default:
       return state;
       break;

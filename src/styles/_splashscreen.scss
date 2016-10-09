@@ -1,4 +1,6 @@
-.SplashScreen {
+.SplashScreen,
+.GameOver,
+.Params {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +14,8 @@
   overflow: auto;
 }
 
+.Params-title,
+.GameOver-title,
 .SplashScreen-title {
   text-align: center;
 }
@@ -24,6 +28,8 @@
   border-radius: 20px;
 }
 
+.Params-resume,
+.GameOver-restart,
 .SplashScreen-begin {
   display: block;
   margin: 50px auto 20px;
@@ -33,10 +39,11 @@
   border-radius: 10px;
   transition: 200ms all ease-in-out;
   border: 4px solid transparent;
-}
 
-.SplashScreen-begin:hover {
-  border: 4px solid $pink;
-  background-color: lighten($blue, 60%);
-  color: $pink;
+  &:hover {
+    border: 4px solid $pink;
+    background-color: lighten($blue, 60%);
+    color: $pink;
+  }
+
 }

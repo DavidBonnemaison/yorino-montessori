@@ -1,17 +1,9 @@
-import {GENERATE_NUMBER} from '../constants/ActionTypes';
-
-export function generateNumber() {
-  return {
-    type: GENERATE_NUMBER
-  };
-}
-
 export function guessNumber(wasGuessed, toGuess, type) {
   if (wasGuessed === toGuess) {
     return {
       type: 'CORRECT_GUESS',
       guessType: type,
-      soundUrl: 'https://www.freesound.org/data/previews/242/242501_4414128-lq.mp3'
+      soundUrl: 'https://s3.amazonaws.com/yorifiles/ok.mp3'
     }
   }
 
@@ -24,7 +16,7 @@ export function guessNumber(wasGuessed, toGuess, type) {
   return {
     type: 'WRONG_GUESS',
     guessType: type,
-    soundUrl: 'https://www.freesound.org/data/previews/342/342756_5260872-lq.mp3'
+    soundUrl: 'https://s3.amazonaws.com/yorifiles/buzz.mp3'
   }
 
 }
