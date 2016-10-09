@@ -1,4 +1,6 @@
-import {PLAY_GAME, RESET_GAME, DISPLAY_PARAMS, DISPLAY_SPLASH, ALL_GUESSED} from './../constants/ActionTypes';
+import {
+  PLAY_GAME, RESET_GAME, DISPLAY_PARAMS, DISPLAY_SPLASH, ALL_GUESSED
+} from './../constants/ActionTypes';
 
 export function playGame() {
   return {

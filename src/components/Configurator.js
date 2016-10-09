@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as ConfigActions from '../actions/ConfigActions';
 
 class Configurator extends Component {
@@ -9,8 +9,7 @@ class Configurator extends Component {
   }
 
   render() {
-
-    const {actions, columns} = this.props;
+    const { actions, columns } = this.props;
 
     function addColumn() {
       actions.addColumn(columns.length + 1);
@@ -35,7 +34,7 @@ Configurator.propTypes = {};
 function mapStateToProps(state) {
   return {
     columns: state.columns
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {

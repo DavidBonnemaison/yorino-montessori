@@ -1,21 +1,21 @@
-import React, {Component, PropTypes} from 'react';
-import {DropTarget} from 'react-dnd';
+import React, { Component, PropTypes } from 'react';
+import { DropTarget } from 'react-dnd';
 import classnames from 'classnames';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as ExpectActions from '../actions/ExpectActions';
-import {UNITS, TENS, HUNDREDS, THOUSANDS} from './../constants/ColumnTypes';
+import { UNITS, TENS, HUNDREDS, THOUSANDS } from './../constants/ColumnTypes';
 
 const dropCase = {
   drop(props) {
   }
 };
 
-function collect(connect, monitor) {
+function collect(connectCollect, monitorCollect) {
   return {
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    highlighted: monitor.canDrop()
+    connectDropTarget: connectCollect.dropTarget(),
+    isOver: monitorCollect.isOver(),
+    highlighted: monitorCollect.canDrop()
   };
 }
 
@@ -26,14 +26,14 @@ class ExpectCase extends Component {
   }
 
   render() {
-    const {connectDropTarget, isOver, type, expectNumber, guesses} = this.props;
-    if (!guesses.filter((guess)=>guess.type === type).pop()) {
+    const { connectDropTarget, isOver, type, expectNumber, guesses } = this.props;
+    if (!guesses.filter(guess => guess.type === type).pop()) {
       return <h1>Loading...</h1>;
     }
-    const guessed = guesses.filter((guess)=>guess.type === type).pop().guessed;
+    const guessed = guesses.filter(guess => guess.type === type).pop().guessed;
     const nbCol = guesses.length;
     const classNames = classnames({
-      'ExpectCase': true,
+      ExpectCase: true,
       [`ExpectCase--${nbCol}`]: true,
       [`ExpectCase--${type}`]: true,
       'ExpectCase--hover': isOver,
@@ -51,7 +51,7 @@ class ExpectCase extends Component {
 function mapStateToProps(state) {
   return {
     guesses: state.guesses
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -75,4 +75,4 @@ ExpectHundreds = DropTarget(HUNDREDS, dropCase, collect)(ExpectHundreds);
 ExpectThousands = DropTarget(THOUSANDS, dropCase, collect)(ExpectThousands);
 ExpectCase = DropTarget('CASE', dropCase, collect)(ExpectCase);
 
-export {ExpectCase, ExpectUnits, ExpectTens, ExpectHundreds, ExpectThousands};
+export { ExpectCase, ExpectUnits, ExpectTens, ExpectHundreds, ExpectThousands };

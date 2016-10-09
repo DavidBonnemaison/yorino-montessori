@@ -1,4 +1,4 @@
-import {CORRECT_GUESS, WRONG_GUESS, GUESSING} from './../constants/ActionTypes';
+import { CORRECT_GUESS, WRONG_GUESS, GUESSING } from './../constants/ActionTypes';
 
 export function guessNumber(wasGuessed, toGuess, type) {
   if (wasGuessed === toGuess) {
@@ -6,12 +6,14 @@ export function guessNumber(wasGuessed, toGuess, type) {
       type: CORRECT_GUESS,
       guessType: type,
       soundUrl: 'https://s3.amazonaws.com/yorifiles/ok.mp3'
-    }
+    };
   }
 
-  let expectedClassList = document.querySelector('[data-type=' + type + '].Case--expected').classList;
+  const expectedClassList = document
+    .querySelector(`data-type=["${type}"].Case--expected`)
+    .classList;
   expectedClassList.add('Case--blink');
-  setTimeout(()=> {
+  setTimeout(() => {
     expectedClassList.remove('Case--blink');
   }, 10000);
 
@@ -19,14 +21,13 @@ export function guessNumber(wasGuessed, toGuess, type) {
     type: WRONG_GUESS,
     guessType: type,
     soundUrl: 'https://s3.amazonaws.com/yorifiles/buzz.mp3'
-  }
-
+  };
 }
 
-export function guessing(guessing, type) {
+export function guessing(newGuessing, type) {
   return {
     type: GUESSING,
     guessType: type,
-    guessedNumber: guessing
-  }
+    guessedNumber: newGuessing
+  };
 }

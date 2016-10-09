@@ -1,16 +1,15 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {ExpectUnits, ExpectTens, ExpectHundreds, ExpectThousands} from './ExpectCase';
-import {UNITS, TENS, HUNDREDS, THOUSANDS} from './../constants/ColumnTypes';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ExpectUnits, ExpectTens, ExpectHundreds, ExpectThousands } from './ExpectCase';
+import { UNITS, TENS, HUNDREDS, THOUSANDS } from './../constants/ColumnTypes';
 import * as ExpectActions from '../actions/ExpectActions';
 
 function select(expectations, wantedType) {
-  return expectations ? expectations.filter(expect => {
-    return expect.type === wantedType;
-  }).map(expect => {
-    return expect.value;
-  }) : undefined;
+  return expectations ? expectations
+    .filter(expect => expect.type === wantedType)
+    .map(expect => expect.value)
+    : undefined;
 }
 
 function mapStateToProps(state) {
@@ -18,7 +17,7 @@ function mapStateToProps(state) {
     expect: state.expect,
     guesses: state.guesses,
     columns: state.columns
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -34,11 +33,10 @@ class Expect extends Component {
   }
 
   render() {
-
-    const {expect, actions, columns} = this.props;
+    const { expect, actions, columns } = this.props;
 
     function handleGuessing(guessing, type) {
-      actions.guessing(guessing, type)
+      actions.guessing(guessing, type);
     }
 
     function buildColumn(column) {
@@ -64,14 +62,14 @@ class Expect extends Component {
         <ExpectType
           type={column.type}
           key={column.type}
-          expectNumber={select(expect,column.type)}
+          expectNumber={select(expect, column.type)}
           handleGuessing={handleGuessing}
         />
-      )
+      );
     }
 
     return (
-      <div className='Expect'>
+      <div className="Expect">
         {columns.map(buildColumn)}
       </div>
     );
@@ -83,4 +81,4 @@ Expect.propTypes = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Expect)
+)(Expect);

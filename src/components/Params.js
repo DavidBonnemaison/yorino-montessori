@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Configurator from './Configurator';
 import * as AppActions from '../actions/AppActions';
 
@@ -12,8 +12,7 @@ class Params extends Component {
   }
 
   render() {
-
-    const {actions} = this.props;
+    const { actions } = this.props;
 
     function playGame() {
       actions.playGame();

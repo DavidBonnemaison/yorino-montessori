@@ -1,5 +1,5 @@
 import React from 'react';
-import {createDevTools} from 'redux-devtools';
+import { createDevTools } from 'redux-devtools';
 
 /**
  * These 2 monitors are very commonly used with 'redux-devtools'.
@@ -14,8 +14,10 @@ const DevTools = createDevTools(
    * Consult their respective repos for further information.
    * Here, we are placing the LogMonitor within the DockMonitor.
    */
-  <DockMonitor toggleVisibilityKey="ctrl-h"
-               changePositionKey="ctrl-q">
+  <DockMonitor
+    toggleVisibilityKey="ctrl-h"
+    changePositionKey="ctrl-q"
+  >
     <LogMonitor theme="tomorrow"/>
   </DockMonitor>
 );

@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {DragDropContext} from 'react-dnd';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Column from '../components/Column';
 import Expect from '../components/Expect';
@@ -9,20 +9,23 @@ import SplashScreen from '../components/SplashScreen';
 import Params from '../components/Params';
 import Sound from '../components/Sound';
 import * as AppActions from '../actions/AppActions';
-import paramIcon from '../../static/images/params_icon.png'
-import homeIcon from '../../static/images/home_icon.png'
+import paramIcon from '../../static/images/params_icon.png';
+import homeIcon from '../../static/images/home_icon.png';
 
 class App extends Component {
   render() {
-
-    const {columns, cases, guesses, app, actions} = this.props;
+    const { columns, cases, guesses, app, actions } = this.props;
 
     const isGameOver = guesses
-        .filter(guess=> guess.guessed === false)
+        .filter(guess => guess.guessed === false)
         .length === 0;
 
     if (isGameOver && app.status !== 'gameOver') {
       actions.allGuessed();
+    }
+
+    function resetGame() {
+      actions.resetGame();
     }
 
     const gameOver = (
@@ -35,11 +38,14 @@ class App extends Component {
       </div>
     );
 
-
     const game = (
-      <div style={{ 'height': '100%' }}>
+      <div style={{ height: '100%' }}>
         <div className="Columns">
-          {columns.map(column => <Column type={column.type} cases={cases} key={column.type} nbCol={columns.length}/>) }
+          {columns.map(column => (
+            <Column
+              type={column.type} cases={cases} key={column.type} nbCol={columns.length}
+            />)
+          ) }
         </div>
         <Expect />
       </div>
@@ -70,23 +76,24 @@ class App extends Component {
       actions.displaySplash();
     }
 
-    function resetGame() {
-      actions.resetGame()
-    }
-
     return (
       <div className="App">
         <Sound />
         <div className="Header">
           <div className="Header-paramHolder">
-            <img src={paramIcon} onClick={displayParams} className="Header-params Header-params--spin"/>
-            <img src={homeIcon} onClick={displaySplash} className="Header-params"/>
+            <img
+              src={paramIcon} onClick={displayParams}
+              className="Header-params Header-params--spin"
+            />
+            <img
+              src={homeIcon} onClick={displaySplash}
+              className="Header-params"
+            />
           </div>
         </div>
         {content}
       </div>
-    )
-
+    );
   }
 }
 

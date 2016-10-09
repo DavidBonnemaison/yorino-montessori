@@ -1,4 +1,6 @@
-import {PLAY_GAME, RESET_GAME, DISPLAY_PARAMS, DISPLAY_SPLASH, ALL_GUESSED} from './../constants/ActionTypes';
+import {
+  PLAY_GAME, RESET_GAME, DISPLAY_PARAMS, DISPLAY_SPLASH, ALL_GUESSED
+} from './../constants/ActionTypes';
 
 // Possible status :
 // - splashscreen
@@ -11,9 +13,8 @@ const initialStatus = {
 };
 
 export default function app(state = initialStatus, action) {
-
   function updateState(status) {
-    return Object.assign({}, state, {status: status});
+    return Object.assign({}, state, { status });
   }
 
   switch (action.type) {

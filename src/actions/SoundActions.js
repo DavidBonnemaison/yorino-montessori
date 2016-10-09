@@ -1,4 +1,4 @@
-import {STOP_PLAYING} from './../constants/ActionTypes';
+import { STOP_PLAYING } from './../constants/ActionTypes';
 
 export function stopPlaying() {
   return {
