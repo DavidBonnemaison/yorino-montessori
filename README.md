@@ -19,9 +19,9 @@ Work in progess.
 - [x] Params screen styles
 - [x] End screen styles
 - [x] App styles
+- [x] Factor constants
 
 ## Todo :
-- [] Factor constants
 - [] Lint
 - [] PropTypes
 - [] Offline handling

@@ -2,7 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {DragSource} from 'react-dnd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as ExpectActions from './../actions/ExpectActions'
+import * as ExpectActions from './../actions/ExpectActions';
+import {UNITS, TENS, HUNDREDS, THOUSANDS} from './../constants/ColumnTypes';
 const classnames = require('classnames');
 
 const caseSource = {
@@ -85,10 +86,10 @@ let CaseUnits = Case;
 let CaseTens = Case;
 let CaseHundreds = Case;
 let CaseThousands = Case;
-CaseUnits = DragSource('UNITS', caseSource, collect)(CaseUnits);
-CaseTens = DragSource('TENS', caseSource, collect)(CaseTens);
-CaseHundreds = DragSource('HUNDREDS', caseSource, collect)(CaseHundreds);
-CaseThousands = DragSource('THOUSANDS', caseSource, collect)(CaseThousands);
+CaseUnits = DragSource(UNITS, caseSource, collect)(CaseUnits);
+CaseTens = DragSource(TENS, caseSource, collect)(CaseTens);
+CaseHundreds = DragSource(HUNDREDS, caseSource, collect)(CaseHundreds);
+CaseThousands = DragSource(THOUSANDS, caseSource, collect)(CaseThousands);
 Case = DragSource('CASE', caseSource, collect)(Case);
 
 export {Case, CaseUnits, CaseTens, CaseHundreds, CaseThousands};

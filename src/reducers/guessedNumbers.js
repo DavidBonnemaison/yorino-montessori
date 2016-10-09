@@ -1,22 +1,25 @@
+import {UNITS, TENS, HUNDREDS, THOUSANDS} from './../constants/ColumnTypes';
+import {RESET_GAME, ADD_COLUMN, REMOVE_COLUMN, CORRECT_GUESS, WRONG_GUESS, GUESSING} from './../constants/ActionTypes';
+
 function generateGuesses(nbColumns = 3) {
   return [
     {
-      type: 'UNITS',
+      type: UNITS,
       value: null,
       guessed: false
     },
     {
-      type: 'TENS',
+      type: TENS,
       value: null,
       guessed: false
     },
     {
-      type: 'HUNDREDS',
+      type: HUNDREDS,
       value: null,
       guessed: false
     },
     {
-      type: 'THOUSANDS',
+      type: THOUSANDS,
       value: null,
       guessed: false
     }
@@ -26,7 +29,7 @@ function generateGuesses(nbColumns = 3) {
 
 export default function guesses(state = generateGuesses(), action) {
   switch (action.type) {
-    case 'GUESSING':
+    case GUESSING:
       return state.map((guess)=> {
         if (guess.type === action.guessType) {
           return Object.assign({}, guess, {value: action.guessedNumber});
@@ -34,7 +37,7 @@ export default function guesses(state = generateGuesses(), action) {
         return guess;
       });
       break;
-    case 'CORRECT_GUESS':
+    case CORRECT_GUESS:
       return state.map((guess)=> {
         if (guess.type === action.guessType) {
           return Object.assign({}, guess, {guessed: true});
@@ -42,7 +45,7 @@ export default function guesses(state = generateGuesses(), action) {
         return guess;
       });
       break;
-    case 'WRONG_GUESS':
+    case WRONG_GUESS:
       return state.map((guess)=> {
         if (guess.type === action.guessType) {
           return Object.assign({}, guess, {guessed: false});
@@ -50,11 +53,11 @@ export default function guesses(state = generateGuesses(), action) {
         return guess;
       });
       break;
-    case 'ADD_COLUMN' :
-    case 'REMOVE_COLUMN' :
+    case ADD_COLUMN :
+    case REMOVE_COLUMN :
       return generateGuesses(action.nbColumns);
       break;
-    case 'RESET_GAME':
+    case RESET_GAME:
       return generateGuesses();
     default:
       return state;

@@ -1,3 +1,5 @@
+import {PLAY_GAME, RESET_GAME, DISPLAY_PARAMS, DISPLAY_SPLASH, ALL_GUESSED} from './../constants/ActionTypes';
+
 // Possible status :
 // - splashscreen
 // - playing
@@ -15,20 +17,17 @@ export default function app(state = initialStatus, action) {
   }
 
   switch (action.type) {
-    case 'DISPLAY_SPLASH':
+    case DISPLAY_SPLASH:
       return updateState('splashscreen');
-    case 'PLAY_GAME':
+    case PLAY_GAME:
       return updateState('playing');
-    case 'DISPLAY_PARAMS':
+    case DISPLAY_PARAMS:
       return updateState('params');
-    case 'ALL_GUESSED':
+    case ALL_GUESSED:
       return updateState('gameOver');
-      break;
-    case 'RESET_GAME':
+    case RESET_GAME:
       return updateState('splashscreen');
-      break;
     default:
       return state;
-      break;
   }
 }

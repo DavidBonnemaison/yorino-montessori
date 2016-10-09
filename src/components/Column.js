@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {CaseUnits, CaseTens, CaseHundreds, CaseThousands} from './Case.js';
+import {UNITS, TENS, HUNDREDS, THOUSANDS} from './../constants/ColumnTypes';
 import classnames from 'classnames';
 
 export default class Column extends Component {
@@ -9,16 +10,16 @@ export default class Column extends Component {
 
   setCaseValue(number, type) {
     switch (type) {
-      case 'UNITS' :
+      case UNITS :
         return number;
         break;
-      case 'TENS':
+      case TENS:
         return number * 10;
         break;
-      case 'HUNDREDS':
+      case HUNDREDS:
         return number * 100;
         break;
-      case 'THOUSANDS':
+      case THOUSANDS:
         return number * 1000;
         break;
       default:
@@ -38,16 +39,16 @@ export default class Column extends Component {
         {cases ? cases.map(CaseProp => {
             let CaseType;
             switch (type) {
-              case 'UNITS':
+              case UNITS:
                 CaseType = CaseUnits;
                 break;
-              case 'TENS':
+              case TENS:
                 CaseType = CaseTens;
                 break;
-              case 'HUNDREDS':
+              case HUNDREDS:
                 CaseType = CaseHundreds;
                 break;
-              case 'THOUSANDS':
+              case THOUSANDS:
                 CaseType = CaseThousands;
                 break;
               default :

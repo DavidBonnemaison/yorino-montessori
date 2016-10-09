@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ExpectUnits, ExpectTens, ExpectHundreds, ExpectThousands} from './ExpectCase';
+import {UNITS, TENS, HUNDREDS, THOUSANDS} from './../constants/ColumnTypes';
 import * as ExpectActions from '../actions/ExpectActions';
 
 function select(expectations, wantedType) {
@@ -43,16 +44,16 @@ class Expect extends Component {
     function buildColumn(column) {
       let ExpectType;
       switch (column.type) {
-        case 'UNITS':
+        case UNITS:
           ExpectType = ExpectUnits;
           break;
-        case 'TENS':
+        case TENS:
           ExpectType = ExpectTens;
           break;
-        case 'HUNDREDS':
+        case HUNDREDS:
           ExpectType = ExpectHundreds;
           break;
-        case 'THOUSANDS':
+        case THOUSANDS:
           ExpectType = ExpectThousands;
           break;
         default:

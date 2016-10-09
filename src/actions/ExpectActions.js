@@ -1,7 +1,9 @@
+import {CORRECT_GUESS, WRONG_GUESS, GUESSING} from './../constants/ActionTypes';
+
 export function guessNumber(wasGuessed, toGuess, type) {
   if (wasGuessed === toGuess) {
     return {
-      type: 'CORRECT_GUESS',
+      type: CORRECT_GUESS,
       guessType: type,
       soundUrl: 'https://s3.amazonaws.com/yorifiles/ok.mp3'
     }
@@ -14,7 +16,7 @@ export function guessNumber(wasGuessed, toGuess, type) {
   }, 10000);
 
   return {
-    type: 'WRONG_GUESS',
+    type: WRONG_GUESS,
     guessType: type,
     soundUrl: 'https://s3.amazonaws.com/yorifiles/buzz.mp3'
   }
@@ -23,7 +25,7 @@ export function guessNumber(wasGuessed, toGuess, type) {
 
 export function guessing(guessing, type) {
   return {
-    type: 'GUESSING',
+    type: GUESSING,
     guessType: type,
     guessedNumber: guessing
   }
