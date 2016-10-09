@@ -11,7 +11,7 @@ export function guessNumber(wasGuessed, toGuess, type) {
   expectedClassList.add('Case--blink');
   setTimeout(()=> {
     expectedClassList.remove('Case--blink');
-  }, 2000);
+  }, 10000);
 
   return {
     type: 'WRONG_GUESS',

@@ -18,10 +18,9 @@ Work in progess.
 - [x] Splash screen styles
 - [x] Params screen styles
 - [x] End screen styles
+- [x] App styles
 
 ## Todo :
-
-- [] App styles
 - [] Factor constants
 - [] Lint
 - [] PropTypes

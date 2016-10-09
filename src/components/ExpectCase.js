@@ -26,12 +26,15 @@ class ExpectCase extends Component {
 
   render() {
     const {connectDropTarget, isOver, type, expectNumber, guesses} = this.props;
-    if(!guesses.filter((guess)=>guess.type === type).pop()) {
+    if (!guesses.filter((guess)=>guess.type === type).pop()) {
       return <h1>Loading...</h1>;
     }
     const guessed = guesses.filter((guess)=>guess.type === type).pop().guessed;
+    const nbCol = guesses.length;
     const classNames = classnames({
       'ExpectCase': true,
+      [`ExpectCase--${nbCol}`]: true,
+      [`ExpectCase--${type}`]: true,
       'ExpectCase--hover': isOver,
       'ExpectCase--guessed': guessed
     });

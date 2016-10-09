@@ -37,9 +37,9 @@ class App extends Component {
 
 
     const game = (
-      <div>
+      <div style={{ 'height': '100%' }}>
         <div className="Columns">
-          {columns.map(column => <Column type={column.type} cases={cases} key={column.type}/>) }
+          {columns.map(column => <Column type={column.type} cases={cases} key={column.type} nbCol={columns.length}/>) }
         </div>
         <Expect />
       </div>

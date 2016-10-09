@@ -1,39 +1,29 @@
 .Case {
-  background: green;
-  color: white;
   padding: 1em;
-  margin: 1em;
   transition: 200ms all ease-in-out;
   cursor: move;
+  background: $whitish;
+  font-weight: bold;
+  margin: 2vh;
+  height: 7.8vh;
+  font-size: 3vh;
+  line-height: 2.5vh;
 }
 
 .Case--blink {
   background-color: yellow;
   color: black;
-  -webkit-animation: blink step-start 1s 0s infinite;
-  animation: blink step-start 1s 0s infinite;
-}
-
-@-webkit-keyframes blink {
-  0% {
-    box-shadow: blue 0 0 10px;
-  }
-  50% {
-    box-shadow: purple 0 0 10px;
-  }
-  100% {
-    box-shadow: blue 0 0 10px;
-  }
+  animation: blink 2s step-start infinite;
 }
 
 @keyframes blink {
   0% {
-    box-shadow: blue 0 0 10px;
+    background-color: white;
   }
   50% {
-    box-shadow: purple 0 0 10px;
+    background-color: yellow;
   }
   100% {
-    box-shadow: blue 0 0 10px;
+    background-color: white;
   }
 }

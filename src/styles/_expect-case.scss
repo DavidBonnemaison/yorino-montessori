@@ -1,18 +1,55 @@
 .ExpectCase {
   display: inline-block;
   vertical-align: middle;
-  background: red;
-  color: white;
-  margin: 0.1em;
   padding: 1em;
-  font-size: 1.2em;
   transition: 200ms all ease-in-out;
+  height: auto;
+  background: white;
+  color: #000;
+  font-weight: bold;
+  margin: 4%;
+  text-align: center;
+  font-size: 3vw;
+  border: 8px solid transparent;
+}
+
+.ExpectCase--1 {
+  width: 92%;
+}
+
+.ExpectCase--2 {
+  width: 42%;
+}
+
+.ExpectCase--3 {
+  width: 25%;
+}
+
+.ExpectCase--4 {
+  margin: 2%;
+  width: 20%;
 }
 
 .ExpectCase--guessed {
-  background-color: green;
+  border: 8px solid green;
 }
 
 .ExpectCase--hover {
-  background-color: blue;
+  border: 8px solid pink;
+}
+
+.ExpectCase--UNITS {
+  color: $UNITS;
+}
+
+.ExpectCase--TENS {
+  color: $TENS;
+}
+
+.ExpectCase--HUNDREDS {
+  color: $HUNDREDS;
+}
+
+.ExpectCase--THOUSANDS {
+  color: $THOUSANDS;
 }

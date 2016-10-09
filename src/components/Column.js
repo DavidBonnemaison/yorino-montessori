@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {CaseUnits, CaseTens, CaseHundreds, CaseThousands} from './Case.js';
+import classnames from 'classnames';
 
 export default class Column extends Component {
   constructor(props, context) {
@@ -26,9 +27,14 @@ export default class Column extends Component {
   }
 
   render() {
-    const {cases, type} = this.props;
+    const {cases, type, nbCol} = this.props;
+    const classNames = classnames({
+      'Column': true,
+      [`Column--${nbCol}`]: true,
+      [`Column--${type}`]: true
+    });
     return (
-      <div className="Column">
+      <div className={classNames}>
         {cases ? cases.map(CaseProp => {
             let CaseType;
             switch (type) {
