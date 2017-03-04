@@ -1,30 +1,11 @@
 #Yorino Montessori
 
-Work in progess.
+Learning game for the [Yorino platform](http://www.yorino.org/). 
 
-## Done :
-- [x] React, Redux, dev boilerplate
-- [x] App structure && logic
-- [x] Drag n Drop
-- [x] Basic validation
-- [x] Make columns configurable
-- [x] App status management
-- [x] Splash screen logic
-- [x] Params screen logic
-- [x] End screen logic
-- [x] Visual feedback (correct and wrong guess)
-- [x] Sound management
-- [x] Reset logic
-- [x] Splash screen styles
-- [x] Params screen styles
-- [x] End screen styles
-- [x] App styles
-- [x] Factor constants
-- [x] Lint
-- [x] PropTypes
+![Yorino logo](https://rcf.fr/sites/default/static.rcf.fr/radios/rcf49/logo-social-white-9030349fb102728bd50fee3c1adab11f0c2d41b4c265781fda5045d5d93661db_2.png)
 
-## Todo :
-- [] Offline handling
 
-## Blocked :
-- [] Dictate actual numbers. Requires A LOT of sound files. Maybe get those from a text-to-speech service ?
+This game aims to help autistic children to learn numbers using the Montessori method. The child has to drag and drop numbers in the right area (units, tens, hundreds), thus recreating a given number.
+
+
+Built with React, Redux & ES6. Compiled with Webpack.
